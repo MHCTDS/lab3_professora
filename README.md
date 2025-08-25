@@ -39,4 +39,4 @@ Com 1k entradas demoru 1728 nanosegundos, com 1M de entradas demorou 10464 nanos
 
 De 1k para 1M de entradas A GPU so gastou 6 vezes mais tempo, mesmo com um aumento de 1000 vezes nos dados. Porem, com 1B de netrads, a gpu demorou 1000 vezes mais, quase com o mesmo tempo de processamento da cpu.
 
-Eu fiz alguns testes extras, e nao parece ter sido o caso de passar o limite do memoria da gpu. Eu teria que investigar o codigo e estudar mais para otimizar a execucao e voltar a ter ganhos de processamento, pois nao acho que a gpu, feita para processar matriz e vetores, deveria levar quaswe o mesmo tempo da cpu.
+Eu fiz alguns testes extras, e nao parece ter sido o caso de passar o limite do memoria da gpu. Eu teria que investigar o codigo e estudar mais para otimizar a execucao e voltar a ter ganhos de processamento, pois nao acho que a gpu, feita para processar matriz e vetores, deveria levar quase o mesmo tempo da cpu.
