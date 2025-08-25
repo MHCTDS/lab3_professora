@@ -36,6 +36,7 @@ int main(int argc, char *argv[]){
     double* retorno; //retorno das threads
     pthread_t *tid_sistema; //vetor de identificadores das threads no sistema
     double time1,time2; // retornar tempos
+    double final_time=0;
 
     if(argc < 3) { printf("Use: %s <arquivo de entrada> <numero de threads> \n", argv[0]); exit(-1); }
 
@@ -83,7 +84,6 @@ int main(int argc, char *argv[]){
     tid_sistema = (pthread_t *) malloc(sizeof(pthread_t) * nthreads);
     if(tid_sistema==NULL) { printf("--ERRO: malloc()\n"); exit(-1); }
 
-    //calculando produto
     GET_TIME(time1);
     for (long int i=0;i<nthreads;i++){
         if (pthread_create(&tid_sistema[i], NULL, produto_vetor, (void*) i)) {
@@ -98,9 +98,28 @@ int main(int argc, char *argv[]){
         produto += *retorno;
     }
     GET_TIME(time2);
+    final_time+=(time2-time1);
+
+    //calculando produto
+    for(int z=0;z<4;z++){
+        GET_TIME(time1);
+        for (long int i=0;i<nthreads;i++){
+            if (pthread_create(&tid_sistema[i], NULL, produto_vetor, (void*) i)) {
+                printf("--ERRO: pthread_create()\n"); exit(-1);
+            }
+        }
+
+        for (long int i=0;i<nthreads;i++){
+            if (pthread_join(tid_sistema[i], (void *) &retorno)) {
+                printf("--ERRO: pthread_join()\n"); exit(-1);
+            }
+        }
+        GET_TIME(time2);
+        final_time+=(time2-time1);
+    }
 
     printf("produto concorrente %lf\n",produto);
-    printf("tempo gastado%lf\n\n",time2-time1);
+    printf("tempo medio gastado %lf\n\n",final_time/5);
 
     printf("produto linear %lf\n",produto_linear);
 
