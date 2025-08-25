@@ -19,17 +19,17 @@ o arquivo de figures inclui fotos do retorno dos programes de cpu e gpu.
 Nenhum dos testes mostrou diferencas no calculo entre o programe concorrente e linear, talvez isso seja devido a alguma feature especial do meu chip.
 
 A CPU gastou com 1k entradas:
-0.000173 segundos com 1 thread, 0.000176 com 4 threads e 0.000367 segundos com 16 threads
+0.000058 segundos com 1 thread, 0.000061 com 2 threads, 0.000072 com 4 threads e 0.000215 segundos com 16 threads
 
 Se observou uma piora no tempo de execucao com o aumento das threads. A teoria do porque seria o overhead da execucao de multiplas threads combinado com a incapacidade do processador de usar branch prediction corretamente com a paralelizacao piorar a perfomance
 
 A CPU gastou com 1M entradas:
-0.002516 segundos com 1 thread, 0.000763 com 4 threads e 0.000668 segundos com 16 threads
+0.002393 segundos com 1 thread, 0.001305 com 2 threads, 0.000650 com 4 threads e 0.000416 segundos com 16 threads
 
 A perfomance melhorou em em ~4 vezes de 1 a 4 threads, mas teve uma melhora muito minima de 4 para 16
 
 A CPU gastou com 1B entradas:
-2.291970 segundos com 1 thread, 0.574209 com 4 threads e 0.148584 segundos com 16 threads
+2.289974 segundos com 1 thread, 1.146138 com 2 threads, 0.575676 com 4 threads e 0.147497 segundos com 16 threads
 
 A perfomance melhorou em em ~4 vezes de 1 a 4 threads e de novo ~4 de 4 a 16 threads, finalmente chegando a uma quantidade de dados grande o suficiente para que o numero de threads fosse inversamente proporcional.
 
