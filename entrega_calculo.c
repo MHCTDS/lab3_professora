@@ -104,6 +104,8 @@ int main(int argc, char *argv[]){
 
     printf("produto linear %lf\n",produto_linear);
 
+    printf("porcentagem de variacao %lf\n",(produto_linear-produto)/produto_linear);
+
     free(retorno);
     free(vetor_A);
     free(vetor_B);
